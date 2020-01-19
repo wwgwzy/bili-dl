@@ -44,9 +44,9 @@ class up_dl():
             return (i["aid"] for i in res_dict["data"]["list"]["vlist"])
 
 class av_dl():
+    
     def __init__(self, avid):
         self.avid = avid
-        
         jsonp = "https://api.bilibili.com/x/web-interface/view?aid=%s"%self.avid
         req = urllib.request.Request(jsonp)
         with urllib.request.urlopen(req) as f:
@@ -59,6 +59,9 @@ class av_dl():
             self.mid = responsed["data"]["owner"]["mid"]
             self.up = responsed["data"]["owner"]["name"]
     
+    def start_demo(self):
+        print(self.title)
+
     def printf(self):
         print(self.title)
 
@@ -66,6 +69,8 @@ def main():
 
     upid = "35359510"
     aUpdl = up_dl(upid)
-    aUpdl.start()
+    # aUpdl.start()
+    aAviddl = av_dl(83387095)
+    aAviddl.start_demo()
 
 main()
